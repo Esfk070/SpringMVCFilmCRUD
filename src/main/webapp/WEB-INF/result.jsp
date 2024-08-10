@@ -6,12 +6,32 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>Film</title>
+	<meta charset="UTF-8">
+	<title>Film - Result</title>
 </head>
 
 <body>
-	<p>${film.title}</p>
+	<h1>	 H1 TAG WITHIN BODY	</h1>
+	
+	<h2>TAG WITHIN BODY H1 - RENAME</h2>
+
+	<c:if test="${not empty film}">
+		<p>Title: ${film.title}</p>
+		<p>Year: ${film.release_year}</p>
+		<p>Rating ${film.rating}</p>
+		<p>Description: ${film.description}</p>
+		
+		<!-- JavaWeb>TagLibraries>JSTL-Map Iteration  -->
+		<p>Cast ${film.title}</p>
+			<ul>
+       			<c:forEach var="actor" items="${film.actors}">
+            			<li>${actors.name}</li>
+        			</c:forEach>
+    			</ul>
+	
+	</c:if>
+	
+
 
 </body>
 
