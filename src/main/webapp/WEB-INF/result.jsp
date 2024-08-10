@@ -22,12 +22,14 @@
 		<p>Description: ${film.description}</p>
 		
 		<!-- JavaWeb>TagLibraries>JSTL-Map Iteration  -->
-		<p>Cast ${film.title}</p>
+<!-- 	<p>Cast: ${film.title}</p>	-->
+		<p>Cast: 
 			<ul>
        			<c:forEach var="actor" items="${film.actors}">
             			<li>${actors.name}</li>
         			</c:forEach>
     			</ul>
+    		</p>
 	
 	</c:if>
 	
