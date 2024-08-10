@@ -24,15 +24,15 @@ public class FilmController {
 	}
 	
 // == Get Film by ID == 
-	@RequestMapping(path = "getFilmById.do", method = RequestMethod.GET)
-	public ModelAndView getFilmById(int filmId) { // 
+	@RequestMapping(path = "getFilmById.do", params = "name", method = RequestMethod.GET)
+	public ModelAndView getFilmById(@RequestParam("name")int filmId) { // 
 		ModelAndView mv = new ModelAndView();
 		Film film = filmdao.findFilmById(filmId); // Need to update - and parameter above.
 		
 		// If successful - index.jsp 	vs.	if UNSUCCESSFUL - error.jsp
 		if (film!= null) {
 			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/index.jsp"); 
+			mv.setViewName("WEB-INF/result.jsp"); 
 		} else {
 			mv.addObject("message", "No film found with ID: " + filmId);
 			mv.setViewName("WEB-INF/error.jsp");
