@@ -29,12 +29,13 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		Film film = filmdao.findFilmById(filmId); // Need to update - and parameter above.
 		
+		// If successful - index.jsp 	vs.	if UNSUCCESSFUL - error.jsp
 		if (film!= null) {
 			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/jsp"); // Need to update - WEBINF...instead of null
+			mv.setViewName("WEB-INF/index.jsp"); 
 		} else {
 			mv.addObject("message", "No film found with ID: " + filmId);
-			mv.setViewName("WEB-IN/jsp"); // Need to update - WEBINF...instead of null
+			mv.setViewName("WEB-INF/error.jsp");
 		}
 		return mv;
 	}
@@ -47,10 +48,10 @@ public class FilmController {
         
         if (!films.isEmpty()) {
             mv.addObject("films", films);
-            mv.setViewName("WEB-INF/jsp"); // TO DO
+            mv.setViewName("WEB-INF/index.jsp"); // TO DO
         } else {
             mv.addObject("message", "No films found with keyword: " + keyword);
-            mv.setViewName("WEB-INF/jsp"); // TO DO
+            mv.setViewName("WEB-INF/error.jsp");
         }
         return mv;
     }
@@ -63,47 +64,53 @@ public class FilmController {
 		
 		if (addedFilm != null) {
 			mv.addObject("film", addedFilm);
-			mv.setViewName("WEB-INF/jsp"); // TO DO
+			mv.setViewName("WEB-INF/index.jsp"); // TO DO
 		} else {
 			mv.addObject("message", "Failed to add new film.");
-			mv.setViewName("WEB-INF/jsp"); // TO DO
+			mv.setViewName("WEB-INF/error.jsp");
 		}
 		return mv;
 	}
 	
 // == UPDATE FILM == 
-	@RequestMapping(path = "updateFilm.do", method = RequestMethod.GET)
+	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
 	public ModelAndView updateFilm(Film film) {
 		ModelAndView mv = new ModelAndView();
-		Film updatedFilm = filmdao.updateFilm(film);
+		Film updatedFilm = filmdao.updateFilm(film); // TO DO
 		
 		if (		) {
 			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/jsp"); // TO DO
+			mv.setViewName("WEB-INF/index.jsp"); // TO DO
 		} else {
 			mv.addObject("message", "Failed to update film.");
-			mv.setViewName("WEB-INF/jsp"); // TO DO
+			mv.setViewName("WEB-INF/error.jsp");
 		}
 		return mv;
 	}
 	
 // == DELETE FILM == 
-	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.GET)
+	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
 	public ModelAndView deleteFilm(Film film) {
 		ModelAndView mv = new ModelAndView();
-		Film updatedFilm = filmdao.updateFilm(film);
+		Film updatedFilm = filmdao.set // TO DO
 		
 		if (		) {
 			mv.addObject("message", "Film has been deleted.");
-			mv.setViewName("WEB-INF/jsp"); // TO DO
+			mv.setViewName("WEB-INF/index.jsp"); // TO DO
 		} else {
 			mv.addObject("message", "Failed to delete film.");
-			mv.setViewName("WEB-INF/jsp"); // TO DO
+			mv.setViewName("WEB-INF/error.jsp");
 		}
 		return mv;
 	}
 	
 	// Will need to look at WEB-INF next. ---- TO DO
+	// 1 JSP for add, 1 for update,
+	// 1 for error JSP
+	
+	// every time you do something differently
+	// form - add form - 
 	
 	
 }
+
