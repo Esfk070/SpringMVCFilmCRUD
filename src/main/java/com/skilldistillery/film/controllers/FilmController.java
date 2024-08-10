@@ -34,7 +34,7 @@ public class FilmController {
 			mv.addObject("film", film);
 			mv.setViewName("WEB-INF/result.jsp"); 
 		} else {
-			mv.addObject("message", "No film found with ID: " + filmId);
+			mv.addObject("message", "No film has been found with ID: " + filmId);
 			mv.setViewName("WEB-INF/error.jsp");
 		}
 		return mv;
@@ -42,15 +42,15 @@ public class FilmController {
 	
 // == Get Film by Keyword == 
 	@RequestMapping(path = "getFilmByKeyword.do", method = RequestMethod.GET)
-    public ModelAndView getFilmByKeyword(String keyword) {
+    public ModelAndView getFilmByKeyword(@RequestParam("keyword") String keyword) {
         ModelAndView mv = new ModelAndView();
         List<Film> films = filmdao.findFilmByKeyword(keyword);
         
         if (!films.isEmpty()) {
             mv.addObject("films", films);
-            mv.setViewName("WEB-INF/index.jsp"); // TO DO
+            mv.setViewName("WEB-INF/result.jsp"); // TO DO
         } else {
-            mv.addObject("message", "No films found with keyword: " + keyword);
+            mv.addObject("message", "No films have been found with keyword: " + keyword);
             mv.setViewName("WEB-INF/error.jsp");
         }
         return mv;
