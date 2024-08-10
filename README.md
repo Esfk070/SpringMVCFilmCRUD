@@ -3,8 +3,8 @@
 
 ## Overview
 
-USER STORY 1 - ( ) in progress / ( ) complete / ( ) not started
-See (file) : 
+USER STORY 1 - (X ) in progress / ( ) complete / ( ) not started
+See (file) : FilmController.java (Justin)
 
 USER STORY 2 - ( ) in progress / ( ) complete / ( ) not started
 See (file) :
