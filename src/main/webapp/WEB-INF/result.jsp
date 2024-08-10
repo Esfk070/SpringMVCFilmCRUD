@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>State</title>
+<title>Film</title>
 </head>
 <body>
 	<p>${film.title}</p>

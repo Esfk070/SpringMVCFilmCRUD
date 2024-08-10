@@ -3,6 +3,7 @@ package com.skilldistillery.film.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -20,8 +21,44 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
     @Override
     public Film findFilmById(int filmId) {
-     
-        return null;
+		Film film = null;
+		String user = "student";
+		String pass = "student";
+		try {
+			Connection conn = DriverManager.getConnection(URL, user, pass);
+			// 1 2 3 4 5
+			String sql = "SELECT id, title, description, release_year, language_id, "
+					// 6 7 8 9
+					+ "rental_duration, rental_rate, length, replacement_cost, "
+					// 10 11
+					+ "rating, special_features FROM film WHERE id=?";
+
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmId);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				film = new Film(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getInt(6), rs.getDouble(7), rs.getInt(8), rs.getDouble(9), rs.getString(10),
+						rs.getString(11));
+
+				/// TODO
+				// get films actors
+				film.setActors(findActorsByFilmId(film.getId()));
+//				film.setLanguageName(findLanguageOfFilm(film.getId()));
+//		  film.setl(findLanguageOfFilm(film.getId()));
+
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return film;
     }
 
     @Override
