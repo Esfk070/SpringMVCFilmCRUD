@@ -67,13 +67,23 @@ public class FilmController {
 		Film addedFilm = new Film();
 		addedFilm.setTitle(filmTitle);
 		
+		addedFilm.setDescription(null);
+		
+		addedFilm.setRelease_year(0);
+		
 		addedFilm.setLanguage_id(languageId);
 		
 		addedFilm.setRental_duration(rentalDuration);
 		
 		addedFilm.setRental_rate(rentalRate);
 		
+		addedFilm.setLength(0);
+		
 		addedFilm.setReplacement_cost(replacementCost);
+		
+		addedFilm.setRating(null);
+		
+		addedFilm.setSpecial_features(null);
 		
 		
 		

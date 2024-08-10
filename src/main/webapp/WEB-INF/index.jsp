@@ -24,30 +24,33 @@
 	<!-- Film ID Form: Allows user to search for a film by Film ID -->
 	<h2>Add Film to DataBase</h2>
 	<form action="addFilm.do" method="post">
+		
 		Title: <input name="filmTitle" type="text" />
 
-		<!-- 		Description:  <input name="filmDescription" type="text" /> <input
-			type="submit" value="Submit" /><br /> -->
+<!--  		Description:  <input name="filmDescription" type="text" /> -->
 
-		Release Year:  <input name="releaseYear" type="text" /> 
+<!-- 		Release Year:  <input name="releaseYear" type="text" />  -->
 
-		Language ID: <input name="languageId" type="text" /> Rental Duration:
-		<input name="rentalDuration" type="text" /> Rental Rate: <input
+		Language ID: <input name="languageId" type="text" /> 
+		
+		Rental Duration:
+		<input name="rentalDuration" type="text" /> 
+		
+		Rental Rate: <input
 			name="rentalRate" type="text" />
 
-		<!-- 		Length:  <input name="releaseYear" type="text" /> <input
-			type="submit" value="Submit" /><br /> -->
+<!-- 		Length:  <input name="releaseYear" type="text" /> -->
 
 		Replacement Cost: <input name="replacementCost" type="text" /> <input
 			type="submit" value="Submit" /><br />
-	</form>
+	
 
-	<!-- 		Rating:  <input name="rating" type="text" /> <input
+<!-- 		Rating:  <input name="rating" type="text" /> <input
+			type="submit" value="Submit" /><br /> 
+
+		Special Features:  <input name="speacialFeatures" type="text" /> <input
 			type="submit" value="Submit" /><br /> -->
-
-	<!-- 		Special Features:  <input name="speacialFeatures" type="text" /> <input
-			type="submit" value="Submit" /><br />
- -->
+ 
 	</form>
 	<br />
 
