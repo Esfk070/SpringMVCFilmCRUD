@@ -12,5 +12,11 @@
 
 
 <!-- TODO form with filmID field and button, action = "getFilm.do" -->
+
+<form action="getFilm.do" method="post">
+	FilmID: <input name = "name" type="text" /><br />
+<input type = "submit" value="Submit" />
+</form>
+
 </body>
 </html>
