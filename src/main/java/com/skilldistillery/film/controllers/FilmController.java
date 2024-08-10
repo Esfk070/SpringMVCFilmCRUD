@@ -19,7 +19,6 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView(" "); // TO-DO?
 		return "WEB-INF/index.jsp";
 	}
-	
 	// USER STORY 1
 	// A user can enter a Film's ID and see the details of the film in a web page. 
 	// If the film is not found, they see an appropriate message.
@@ -28,11 +27,34 @@ public class FilmController {
 	public ModelAndView getFilmById(int filmId) { // 
 		ModelAndView mv = new ModelAndView();
 		Film film = filmdao.findFilmById(filmId); // Need to update - and parameter above.
-		mv.addObject("film", film);
-		mv.setViewName(null); // Need to update - WEBINF...instead of null
+		
+		if (film!= null) {
+			mv.addObject("film", film);
+			mv.setViewName("WEB-INF/result.jsp"); // Need to update - WEBINF...instead of null
+		} else {
+			mv.addObject("message", "No film found with ID: " + filmId);
+			mv.setViewName("WEB-INF/result.jsp"); // Need to update - WEBINF...instead of null
+		}
 		return mv;
 	}
 	
 // == Get Film by Keyword == 
+	@RequestMapping(path = "getFilmById.do", method = RequestMethod.GET)
+	
+// == ADD FILM == 
+	@RequestMapping(path = "getFilmById.do", method = RequestMethod.GET)
+	
+// == UPDATE FILM == 
+	@RequestMapping(path = "getFilmById.do", method = RequestMethod.GET)
+	
+// == DELETE FILM == 
+	@RequestMapping(path = "getFilmById.do", method = RequestMethod.GET)
 
+	
+	
+	// Will need to look at WEB-INF next. ---- TO DO
+	
+	
+	
+	
 }
