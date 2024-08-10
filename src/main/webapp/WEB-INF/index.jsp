@@ -5,8 +5,8 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>MVC Film Site</title>
+	<meta charset="UTF-8">
+	<title>MVC Film Site</title>
 </head>
 
 <body>
