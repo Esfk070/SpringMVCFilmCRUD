@@ -34,6 +34,8 @@ Saturday:
 - error.jsp to handle: errors (failed to find, failed to add,
 	failed to update, failed to delete
 - FilmController (if - goes to index; else - goes to error)
+- error.jsp is functional (if 1001 is entered, no film is found and displays link to index (home)
+- 
 
 	
 	

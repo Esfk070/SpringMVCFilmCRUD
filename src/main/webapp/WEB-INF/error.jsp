@@ -7,15 +7,16 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Film Site - Error (Title)</title>
+<!--  Title does not display to user -->
+<title>	SpringMVC Film Site - Error </title>
 
 </head>
 
 <body>
-	<h1>Film Site - Error (Body)</h1>
+	<h1>Error!</h1>
 		<p>${message}</p>
 	
-	<a href="index.do">Go back to Film Site - Home (a tag - href within body)</a>
+	<a href="index.do">Try again - Home</a>
 </body>
 
 
