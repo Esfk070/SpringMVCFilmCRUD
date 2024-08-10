@@ -6,15 +6,16 @@
 
 <head>
 <meta charset="UTF-8">
-<title>MVC Film Site</title>
+
+<title>Film Site - Error (Title)</title>
+
 </head>
 
-
 <body>
-	<h1>Film Site - Error</h1>
-
-
-	<!-- TODO form with filmID field and button, action = "getFilm.do" -->
+	<h1>Film Site - Error (Body)</h1>
+		<p>${message}</p>
+	
+	<a href="index.do">Go back to Film Site - Home (a tag - href within body)</a>
 </body>
 
 
