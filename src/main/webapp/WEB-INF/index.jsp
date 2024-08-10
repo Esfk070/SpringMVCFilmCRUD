@@ -13,7 +13,7 @@
 
 <!-- TODO form with filmID field and button, action = "getFilm.do" -->
 
-<form action="getFilm.do" method="post">
+<form action="getFilm.do" method="GET">
 	FilmID: <input name = "name" type="text" /><br />
 <input type = "submit" value="Submit" />
 </form>

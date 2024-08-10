@@ -9,6 +9,7 @@
 <title>State</title>
 </head>
 <body>
+	<p>${film.title}</p>
 
 </body>
 </html>
