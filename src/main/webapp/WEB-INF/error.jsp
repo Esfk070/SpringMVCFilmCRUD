@@ -11,7 +11,7 @@
 
 
 <body>
-	<h1>Welcome to the Film Site</h1>
+	<h1>Film Site - Error</h1>
 
 
 	<!-- TODO form with filmID field and button, action = "getFilm.do" -->
