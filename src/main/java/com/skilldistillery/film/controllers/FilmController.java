@@ -57,20 +57,20 @@ public class FilmController {
     }
 	
 // == ADD FILM == 
-//	@RequestMapping(path = "addFilm.do", method = RequestMethod.POST	)
-//	public ModelAndView addFilm(Film film) {
-//		ModelAndView mv = new ModelAndView();
-//		Film addedFilm = filmdao.addFilm(film);
-//		
-//		if (addedFilm != null) {
-//			mv.addObject("film", addedFilm);
-//			mv.setViewName("WEB-INF/index.jsp"); // TO DO
-//		} else {
-//			mv.addObject("message", "Failed to add new film.");
-//			mv.setViewName("WEB-INF/error.jsp");
-//		}
-//		return mv;
-//	}
+	@RequestMapping(path = "addFilm.do", method = RequestMethod.POST	)
+	public ModelAndView addFilm(Film film) {
+		ModelAndView mv = new ModelAndView();
+		Film addedFilm = filmdao.addFilm(film);
+		
+		if (addedFilm != null) {
+			mv.addObject("film", addedFilm);
+			mv.setViewName("WEB-INF/index.jsp"); // TO DO
+		} else {
+			mv.addObject("message", "Failed to add new film.");
+			mv.setViewName("WEB-INF/error.jsp");
+		}
+		return mv;
+	}
 //	
 //// == UPDATE FILM == 
 //	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
