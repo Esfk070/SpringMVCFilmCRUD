@@ -48,7 +48,7 @@ public class FilmController {
         
         if (!films.isEmpty()) {
             mv.addObject("films", films);
-            mv.setViewName("WEB-INF/index.jsp"); // TO DO
+            mv.setViewName("WEB-INF/result.jsp"); // TO DO
         } else {
             mv.addObject("message", "No films found with keyword: " + keyword);
             mv.setViewName("WEB-INF/error.jsp");
