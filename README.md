@@ -38,8 +38,14 @@ Saturday:
 	
 	
 Index JSP vs. Error JSP
-	Index - main entry point of the web application	
-		  - contains forms, links
+	
+Index - main entry point of the web application	
+	  - contains forms, links (front end interface)
+	  
+Result - displays outcome (of user actions)
+
+Error - dynamic (can be used to handle multiple types of errors)		
+ 	  - error.jsp reads the error message from the request attributes (& displays)   	  
 	
 
 ### Team Members
