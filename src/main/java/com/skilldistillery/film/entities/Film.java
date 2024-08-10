@@ -5,37 +5,39 @@ import java.util.Objects;
 
 public class Film {
 	
-	private int id;		//1
+	private int id;		
 	
-	private String title;	//2
+	private String title;	
 	
-	private String description;	//3
+	private String description;	
 	
-	private Integer release_year;	//4	Nullable 
+	private Integer release_year;	//  Nullable
 	
-	private int language_id;	//5
+	private int language_id;	
 	
-	private int rental_duration;	//6
+	private int rental_duration;	
 	
-	private double rental_rate;		//7
+	private double rental_rate;		
 	
-	private Integer length;				//8	Nullable
+	private Integer length;				// Nullable
 	
-	private double replacement_cost;	//9
+	private double replacement_cost;	
 	
-	private String rating;			//10
+	private String rating;		
 	
-	private String special_features;	//11
+	private String special_features;	
 	
-	private List<Actor> actors;
+	private List<Actor> actors;		
 	
-	private String languageName;
+	private String languageName;	
 	
 	
 	static {
 		
 	}
 
+
+	
 	public String getLanguageName() {
 		return languageName;
 	}
@@ -128,10 +130,6 @@ public class Film {
 		return rating;
 	}
 
-	public Film() {
-		super();
-	}
-
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
@@ -142,6 +140,11 @@ public class Film {
 
 	public void setSpecial_features(String special_features) {
 		this.special_features = special_features;
+	}
+
+	
+	public Film() {
+		super();
 	}
 
 	public Film(int id, String title, String description, int release_year, int language_id, int rental_duration,
@@ -159,13 +162,14 @@ public class Film {
 		this.special_features = special_features;
 	}
 
+
+	
 	@Override
 	public String toString() {
-		return "title=" + title + ", release_year=" + release_year+", rating=" + rating
-				+       ", description=" + description + ", language=" + languageName + ", Actors = " + actors;
-//				 + ", rental_duration=" + rental_duration + ", rental_rate="
-//				+ rental_rate + ", length=" + length + ", replacement_cost=" + replacement_cost +  ", special_features=" + special_features + "]";
+		return "title=" + title + ", release_year=" + release_year + ", rating=" + rating
+				+ ", description=" + description + ", language=" + languageName + ", Actors=" + actors;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -189,8 +193,4 @@ public class Film {
 				&& Double.doubleToLongBits(replacement_cost) == Double.doubleToLongBits(other.replacement_cost)
 				&& Objects.equals(special_features, other.special_features) && Objects.equals(title, other.title);
 	}
-	
-	
-	
-	
 }
