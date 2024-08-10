@@ -14,9 +14,9 @@ import com.skilldistillery.film.entities.Film;
 @Component
 public class FilmDaoJdbcImpl implements FilmDAO {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/yourDatabaseName";
-    private static final String USER = "yourUsername";
-    private static final String PASS = "yourPassword";
+    private static final String URL = "jdbc:mysql://localhost:3306/sdvid";
+    private static final String USER = "student";
+    private static final String PASS = "student";
 
     @Override
     public Film findFilmById(int filmId) {

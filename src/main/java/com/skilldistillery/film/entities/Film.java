@@ -193,4 +193,34 @@ public class Film {
 				&& Double.doubleToLongBits(replacement_cost) == Double.doubleToLongBits(other.replacement_cost)
 				&& Objects.equals(special_features, other.special_features) && Objects.equals(title, other.title);
 	}
+
+	public int getReleaseYear() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getLanguageId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int getRentalDuration() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public double getRentalRate() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public double getReplacementCost() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
 }
+
+
