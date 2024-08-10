@@ -14,8 +14,8 @@
 <!-- TODO form with filmID field and button, action = "getFilm.do" -->
 
 
-<form action="getFilmById.do" method="post">
-	FilmID: <input name = "name" type="text" /><br />
+<form action="getFilmById.do" method="get">
+	FilmID: <input name = "filmId" type="text" /><br />
 <input type = "submit" value="Submit" />
 </form>
 

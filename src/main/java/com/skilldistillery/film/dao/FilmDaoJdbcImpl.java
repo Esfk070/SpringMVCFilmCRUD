@@ -15,17 +15,26 @@ import com.skilldistillery.film.entities.Film;
 @Component
 public class FilmDaoJdbcImpl implements FilmDAO {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/yourDatabaseName";
-    private static final String USER = "yourUsername";
-    private static final String PASS = "yourPassword";
+    private static final String URL = "jdbc:mysql://localhost:3306/sdvid";
+    private static final String USER = "student";
+    private static final String PASS = "student";
+    
+    public FilmDaoJdbcImpl() {
+    	  try {
+    	   Class.forName("com.mysql.cj.jdbc.Driver");
+    	  } catch (ClassNotFoundException e) {
+    	   e.printStackTrace();
+    	   System.err.println("Error loading MySQL Driver");
+    	   throw new RuntimeException("Unable to load MySQL Driver class");
+    	  }
+    	 }
 
     @Override
     public Film findFilmById(int filmId) {
 		Film film = null;
-		String user = "student";
-		String pass = "student";
+
 		try {
-			Connection conn = DriverManager.getConnection(URL, user, pass);
+			Connection conn = DriverManager.getConnection(URL, USER, PASS);
 			// 1 2 3 4 5
 			String sql = "SELECT id, title, description, release_year, language_id, "
 					// 6 7 8 9
@@ -88,12 +97,12 @@ public class FilmDaoJdbcImpl implements FilmDAO {
             
             stmt.setString(1, newFilm.getTitle());
             stmt.setString(2, newFilm.getDescription());
-            stmt.setInt(3, newFilm.getReleaseYear());
-            stmt.setInt(4, newFilm.getLanguageId());
-            stmt.setInt(5, newFilm.getRentalDuration());
-            stmt.setDouble(6, newFilm.getRentalRate());
-            stmt.setInt(7, newFilm.getLength());
-            stmt.setDouble(8, newFilm.getReplacementCost());
+//            stmt.setInt(3, newFilm.getReleaseYear());
+//            stmt.setInt(4, newFilm.getLanguageId());
+//            stmt.setInt(5, newFilm.getRentalDuration());
+//            stmt.setDouble(6, newFilm.getRentalRate());
+//            stmt.setInt(7, newFilm.getLength());
+//            stmt.setDouble(8, newFilm.getReplacementCost());
             stmt.setString(9, newFilm.getRating());
 
             int rowsAffected = stmt.executeUpdate();
