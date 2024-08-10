@@ -27,7 +27,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
     }
 
     @Override
-    public List<Film> findByKeyword(String keyword) {
+    public List<Film> findFilmByKeyword(String keyword) {
         // TODO Auto-generated method stub
         return null;
     }
