@@ -3,6 +3,10 @@
 
 ## Overview
 
+The SpringMVCFilmCRUD project is a full stack Spring MVC web application, that showcases basic CRUD functionality.
+
+-- TO DO LIST: (will be deleted before final push)
+
 USER STORY 1 - (X ) in progress / ( ) complete / ( ) not started
 See (file) : FilmController.java (Justin)
 
@@ -22,11 +26,31 @@ USER STORY 6 - ( ) in progress / ( ) complete / ( ) not started
 See (file) : 
 
 ### Team Members
-* Yolanda
-* Justin
+* Yolanda Rivers
+* Kevin Esfahani
+* Justin Denton
 
 ## How to Run
+* The user...
 
 ## Technologies used
+* Spring Tool Suite, Eclipse IDE
+* git, GitHub
+* Java
+* SpringMVC; Create, Update, Retrieve, Delete (CRUD)
 
 ## Lessons learned
+* Spring framework: (uses/functionality)
+** Plain Old Java Objects (POJOs) - Java objects that do NOT extend other frameworks.
+
+TO DO: GO BACK THROUGH CHAPTER on GitHub
+
+* Dependency Injection: 
+
+
+
+
+
+
+
+
