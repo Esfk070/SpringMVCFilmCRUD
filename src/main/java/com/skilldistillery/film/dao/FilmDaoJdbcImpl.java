@@ -132,7 +132,34 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
     @Override
     public boolean deleteFilmById(Film filmToDelete) {
-        
-        return false;
+		Connection conn = null;
+
+		try {
+			String url = "jdbc:mysql://localhost:3306/sdvid";
+			String user = "student";
+			String pword = "student";
+			conn = DriverManager.getConnection(url, user, pword);
+			conn.setAutoCommit(false);
+
+			String sql = "DELETE FROM film WHERE id = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, filmToDelete.getId());
+			int updateCount = stmt.executeUpdate();
+			conn.commit();
+			
+			if(updateCount > 0) {
+				return true;
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException sqle2) {
+					System.out.println("Error trying to rollback");
+				}
+			}
+		}
+		return false;
     }
 }
