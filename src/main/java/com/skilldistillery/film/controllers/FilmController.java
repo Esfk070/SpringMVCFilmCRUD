@@ -57,14 +57,33 @@ public class FilmController {
     }
 	
 // == ADD FILM == 
-	@RequestMapping(path = "addFilm.do", method = RequestMethod.POST	)
-	public ModelAndView addFilm(Film film) {
+	@RequestMapping(path = "addFilm.do", params = {"filmTitle", "languageId", "rentalDuration", "rentalRate", 
+			"replacementCost"}, method = RequestMethod.POST	)
+	public ModelAndView addFilm(@RequestParam("filmTitle") String filmTitle, @RequestParam("languageId") int languageId, 
+			@RequestParam("rentalDuration") int rentalDuration, @RequestParam("rentalRate") double rentalRate,
+			@RequestParam("replacementCost") double replacementCost) {
 		ModelAndView mv = new ModelAndView();
-		Film addedFilm = filmdao.addFilm(film);
+		
+		Film addedFilm = new Film();
+		addedFilm.setTitle(filmTitle);
+		
+		addedFilm.setLanguage_id(languageId);
+		
+		addedFilm.setRental_duration(rentalDuration);
+		
+		addedFilm.setRental_rate(rentalRate);
+		
+		addedFilm.setReplacement_cost(replacementCost);
+		
+		
+		
+		
+		
+		filmdao.addFilm(addedFilm);
 		
 		if (addedFilm != null) {
 			mv.addObject("film", addedFilm);
-			mv.setViewName("WEB-INF/index.jsp"); // TO DO
+			mv.setViewName("WEB-INF/result.jsp"); // TO DO
 		} else {
 			mv.addObject("message", "Failed to add new film.");
 			mv.setViewName("WEB-INF/error.jsp");
