@@ -7,15 +7,15 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Film - Result</title>
+	<title>Films - Result</title>
 </head>
 
 <body>
-	<h1>	 Here are your results: </h1>
+	<h1>	 Here are your list of films: </h1>
 	
-	
+		<p>${film.filmList}</p>
 
-	<c:if test="${not empty film}">
+	<c:if test="${not empty filmList}">
 		<p>Title: ${film.title}</p>
 		<p>Year: ${film.release_year}</p>
 		<p>Rating: ${film.rating}</p>

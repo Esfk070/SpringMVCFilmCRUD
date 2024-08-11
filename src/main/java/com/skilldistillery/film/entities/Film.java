@@ -12,13 +12,14 @@ public class Film {
     private int language_id;
     private int rental_duration;
     private double rental_rate;
-    private Integer length; // Nullable
+    private Integer length = 0;
     private double replacement_cost;
     private String rating;
     private String special_features;
     private List<Actor> actorList;
     private String languageName;
     private List<Actor> filmCast;
+    private List<Film> filmList;
 
     // --------------------------------------------------------------
     public List<Actor> getFilmCast() {
