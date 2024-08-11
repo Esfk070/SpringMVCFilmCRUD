@@ -86,10 +86,10 @@ public class FilmController {
 		addedFilm.setSpecial_features(null);
 		
 		
+
 		
-		
-		
-		filmdao.addFilm(addedFilm);
+		addedFilm = filmdao.addFilm(addedFilm);
+		System.out.println("Look HERE NOW!!!" + addedFilm.getId());
 		
 		if (addedFilm != null) {
 			mv.addObject("film", addedFilm);
@@ -121,15 +121,16 @@ public class FilmController {
 	
 	
 	
-	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
-	public ModelAndView deleteFilm(Film film) {
+	@RequestMapping(path = "deleteFilm.do", params="filmId", method = RequestMethod.POST)
+	public ModelAndView deleteFilm(@RequestParam("filmId") int filmId) {
 		ModelAndView mv = new ModelAndView();
-		filmdao.deleteFilmById(film);
+		filmdao.deleteFilmById(filmId);
+		System.out.println("is request mapping good?");
 		
-		
-		if (filmdao.findFilmById(film.getId())==null) {
+		if (filmdao.findFilmById(filmId)==null) {
+			System.out.println("what about if statment???");
 			mv.addObject("message", "Film has been deleted.");
-			mv.setViewName("WEB-INF/result.jsp"); // TO DO
+			mv.setViewName("WEB-INF/resultDelete.jsp"); // TO DO
 		} else {
 			mv.addObject("message", "Failed to delete film.");
 			mv.setViewName("WEB-INF/error.jsp");

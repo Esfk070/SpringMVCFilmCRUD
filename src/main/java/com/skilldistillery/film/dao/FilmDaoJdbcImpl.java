@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,11 +104,11 @@ public class FilmDaoJdbcImpl implements FilmDAO {
     }
 
     @Override
-    public void addFilm(Film newFilm) {
+    public Film addFilm(Film newFilm) {
         String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, "
                    + "rental_rate, length, replacement_cost, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS)){
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             
             stmt.setString(1, newFilm.getTitle());
             stmt.setString(2, newFilm.getDescription());
@@ -118,20 +119,36 @@ public class FilmDaoJdbcImpl implements FilmDAO {
             stmt.setInt(7, newFilm.getLength());
             stmt.setDouble(8, newFilm.getReplacement_cost());
             stmt.setString(9, newFilm.getRating());
+            
+
+            
+          
+
+            
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
                 throw new SQLException("Failed to insert film, no rows affected.");
             }
+            ResultSet keys = stmt.getGeneratedKeys();
+            if(keys.next()) {
+                int newFilmID = keys.getInt(1);
+                System.out.println(newFilmID);
+                newFilm.setId(newFilmID);
+                System.out.println("Look Here!!!" + newFilm.getId());
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("Error adding new film to database", e);
         }
+        
+        return newFilm;
     }
 
     @Override
-    public boolean deleteFilmById(Film filmToDelete) {
+    public boolean deleteFilmById(int filmId) {
 		Connection conn = null;
 
 		try {
@@ -143,10 +160,12 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
 			String sql = "DELETE FROM film WHERE id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, filmToDelete.getId());
+			System.out.println("Film ID to delete: " + filmId);
+
+			stmt.setInt(1, filmId);
 			int updateCount = stmt.executeUpdate();
 			conn.commit();
-			
+			System.out.println("IS delete working????");
 			if(updateCount > 0) {
 				return true;
 			}
@@ -161,5 +180,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 			}
 		}
 		return false;
+
     }
 }

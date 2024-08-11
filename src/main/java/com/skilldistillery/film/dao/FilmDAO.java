@@ -12,7 +12,7 @@ public interface FilmDAO {
 	public List<Actor> findActorsByFilmId(int filmId);
 	public List<Film> findFilmByKeyword (String keyword);
 	
-	public void addFilm(Film newFilm);
-	public boolean deleteFilmById (Film filmToDelete);
+	public Film addFilm(Film newFilm);
+	public boolean deleteFilmById (int filmId);
 
 }

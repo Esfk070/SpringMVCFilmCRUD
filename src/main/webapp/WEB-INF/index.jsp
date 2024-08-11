@@ -21,6 +21,8 @@
 	</form>
 	<br />
 
+
+
 	<!-- Film ID Form: Allows user to search for a film by Film ID -->
 	<h2>Add Film to DataBase</h2>
 	<form action="addFilm.do" method="post">
@@ -55,6 +57,15 @@
 	<br />
 
 
+	<!-- Delete FIlm Form: Allows user to search for a film by id -->
+	<h2>Delete Film by ID</h2>
+	<form action="deleteFilm.do" method="post">
+		Delete by Film ID: <input name="filmId" type="text" /> <input
+			type="submit" value="Submit" /><br />
+	</form>
+	
+	
+	
 	<!-- Film Keyword Form: Allows user to search for a film by keyword -->
 	<h2>Search for Film by Keyword</h2>
 	<form action="getFilmByKeyword.do" method="get">
