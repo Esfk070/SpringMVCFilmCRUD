@@ -11,29 +11,28 @@
 </head>
 
 <body>
-	<h1>	 Here are your list of films: </h1>
+<h1>	 Here are your list of films: </h1>
 	
-		<p>${film.filmList}</p>
+	
 
-	<c:if test="${not empty filmList}">
-		<p>Title: ${film.title}</p>
-		<p>Year: ${film.release_year}</p>
-		<p>Rating: ${film.rating}</p>
-		<p>Description: ${film.description}</p>
-		
-		<p>Films: ${films.filmCast}</p>
-		
+	<c:if test="${not empty films}">
+		<c:forEach var="film" items="${films}">
+			<p>Title: ${film.title}</p>
+			<p>Year: ${film.release_year}</p>
+			<p>Rating: ${film.rating}</p>
+			<p>Description: ${film.description}</p>		
 		
 		<!-- JavaWeb>TagLibraries>JSTL-Map Iteration  -->
-<!-- 	<p>Cast: ${film.title}</p>	-->
-		<p>Cast: 
-		 	 <ul>
-       			<c:forEach var="actor" items="${film.filmCast}">
-            			<li>${actor.first_name}</li>
-        			</c:forEach>
-    			</ul>
-    		</p>
-	
+			<p>Cast: 
+<%-- 		 	 	<ul>
+       				<c:forEach var="actor" items="${film.filmCast}">
+            				<li>${actor.first_name}</li>
+        				</c:forEach>
+    				</ul> --%>
+    			</p>
+    	
+		</c:forEach>
+		
 	</c:if>
 	
 
