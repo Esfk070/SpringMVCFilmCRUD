@@ -5,6 +5,7 @@ import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 public interface FilmDAO {
+<<<<<<< HEAD
     Film findFilmById(int filmId);
     Actor findActorById(int actorId);
     List<Actor> findActorsByFilmId(int filmId);
@@ -14,3 +15,18 @@ public interface FilmDAO {
     boolean updateFilm(Film film);
 }
 
+=======
+
+	public Film findFilmById(int filmId);
+	public Actor findActorById(int actorId);
+	public List<Actor> findActorsByFilmId(int filmId);
+	public List<Film> findFilmByKeyword (String keyword);
+	
+	public boolean addFilm(Film newFilm);
+	
+	public boolean deleteFilmById (Film filmToDelete);
+
+	public boolean deleteFilmById (int filmId);
+
+}
+>>>>>>> 44a855704382c8feba0be66b31454d1473b9fa2e
