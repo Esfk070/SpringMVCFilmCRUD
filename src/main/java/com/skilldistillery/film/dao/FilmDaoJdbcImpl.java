@@ -42,7 +42,8 @@ public class FilmDaoJdbcImpl implements FilmDAO {
                 + "rating, special_features FROM film WHERE id=?";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
-        	System.out.println("FilmDaoJdbcImpl called");
+        	
+        		System.out.println("FilmDaoJdbcImpl called");
 
             stmt.setInt(1, filmId);
             ResultSet rs = stmt.executeQuery();
@@ -52,7 +53,11 @@ public class FilmDaoJdbcImpl implements FilmDAO {
                         rs.getInt(6), rs.getDouble(7), rs.getInt(8), rs.getDouble(9), rs.getString(10),
                         rs.getString(11));
 
-                film.setActors(findActorsByFilmId(film.getId()));
+                List<Actor> actors = findActorsByFilmId(filmId);
+                film.setActors(actors);
+                film.setFilmCast(actors);
+                
+                //film.setActors(findActorsByFilmId(film.getId()));
             }
 
         } catch (SQLException e) {

@@ -12,8 +12,6 @@
 
 <body>
 	<h1>	 Here are your results: </h1>
-	
-	
 
 	<c:if test="${not empty film}">
 		<p>Title: ${film.title}</p>
@@ -21,24 +19,15 @@
 		<p>Rating: ${film.rating}</p>
 		<p>Description: ${film.description}</p>
 		
-		<p>Films: ${films.filmCast}</p>
-		
-		
 		<!-- JavaWeb>TagLibraries>JSTL-Map Iteration  -->
-<!-- 	<p>Cast: ${film.title}</p>	-->
-		<p>Cast: 
+		<p>Cast:</p> 
 		 	 <ul>
        			<c:forEach var="actor" items="${film.filmCast}">
-            			<li>${actor.first_name}</li>
+            			<li>${actor.first_name} ${actor.last_name}</li>
         			</c:forEach>
     			</ul>
-    		</p>
-	
 	</c:if>
-	
-
 
 </body>
-
 
 </html>
