@@ -122,6 +122,7 @@ public class FilmController {
 
     @RequestMapping(path = "deleteFilm.do", params = "filmId", method = RequestMethod.POST)
     public ModelAndView deleteFilm(@RequestParam("filmId") int filmId) {
+    	System.out.println("deleteFilm called in Film controller on button press");
         ModelAndView mv = new ModelAndView();
         boolean deleted = filmdao.deleteFilmById(filmId);
 
