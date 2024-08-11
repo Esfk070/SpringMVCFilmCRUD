@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib uri="https://jakarta.ee/tags/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>Films - Result</title>
 
-
+	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -40,13 +40,10 @@
 			</div>
 		</c:if>
 
-		
-		<div class="mt-4">
-			<a href="index.do" class="btn btn-primary">Return to Main Menu</a>
-		</div>
+		<a href="index.do" class="btn btn-primary mt-4">Return to Main Menu</a>
 	</div>
 
-	<!-- Bootstrap JS and dependencies -->
+	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
