@@ -24,7 +24,7 @@
 		<p>Cast: 
 			<ul>
        			<c:forEach var="actor" items="${film.actors}">
-            			<li>${actors.name}</li>
+            			<li>${actor.name}</li>
         			</c:forEach>
     			</ul>
     		</p>
