@@ -7,19 +7,24 @@ import com.skilldistillery.film.entities.Film;
 
 public interface FilmDAO {
 
-	public Film findFilmById(int filmId);
-	public Actor findActorById(int actorId);
-	public List<Actor> findActorsByFilmId(int filmId);
-	public List<Film> findFilmByKeyword (String keyword);
-	
-// <<<<<<< HEAD
-	// public void addFilm(Film newFilm);
-	public boolean addFilm(Film newFilm);
-	
-	public boolean deleteFilmById (Film filmToDelete);
-// =======
-// 	public Film addFilm(Film newFilm);
-	public boolean deleteFilmById (int filmId);
-// >>>>>>> 57ecc9ef77b321cbbd6c440daf56f0351d31ba0c
+    // Find a film by its ID
+    public Film findFilmById(int filmId);
 
+    // Find an actor by their ID
+    public Actor findActorById(int actorId);
+
+    // Find all actors associated with a given film ID
+    public List<Actor> findActorsByFilmId(int filmId);
+
+    // Search for films by keyword in title or description
+    public List<Film> findFilmByKeyword(String keyword);
+
+    // Add a new film to the database and return the Film object with the generated ID
+    public Film addFilm(Film newFilm);
+
+    // Delete a film by its ID
+    public boolean deleteFilmById(int filmId);
+
+    // Update an existing film's details
+    public boolean updateFilm(Film film);
 }
