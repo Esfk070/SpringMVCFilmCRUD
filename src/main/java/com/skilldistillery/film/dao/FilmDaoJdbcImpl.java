@@ -17,7 +17,7 @@ import com.skilldistillery.film.entities.Film;
 @Component
 public class FilmDaoJdbcImpl implements FilmDAO {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/sdvid";
+    private static final String URL = "jdbc:mysql://localhost:8889/sdvid";
     private static final String USER = "student";
     private static final String PASS = "student";
 
@@ -34,7 +34,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
     @Override
     public Film findFilmById(int filmId) {
         Film film = null;
-
         String sql = "SELECT id, title, description, release_year, language_id, "
                 + "rental_duration, rental_rate, length, replacement_cost, "
                 + "rating, special_features FROM film WHERE id=?";
@@ -143,19 +142,19 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
             stmt.setString(1, newFilm.getTitle());
             stmt.setString(2, newFilm.getDescription());
-            stmt.setInt(3, newFilm.getReleaseYear());
-            stmt.setInt(4, newFilm.getLanguageId());
-            stmt.setInt(5, newFilm.getRentalDuration());
-            stmt.setDouble(6, newFilm.getRentalRate());
+            stmt.setInt(3, newFilm.getRelease_year());
+            stmt.setInt(4, newFilm.getLanguage_id());
+            stmt.setInt(5, newFilm.getRental_duration());
+            stmt.setDouble(6, newFilm.getRental_rate());
             stmt.setInt(7, newFilm.getLength());
-            stmt.setDouble(8, newFilm.getReplacementCost());
+            stmt.setDouble(8, newFilm.getReplacement_cost());
             stmt.setString(9, newFilm.getRating());
 
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected > 0) {
                 ResultSet keys = stmt.getGeneratedKeys();
                 if (keys.next()) {
-                    newFilm.setId(keys.getInt(1)); 
+                    newFilm.setId(keys.getInt(1));
                 }
                 return true;
             }
@@ -174,6 +173,34 @@ public class FilmDaoJdbcImpl implements FilmDAO {
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, filmId);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateFilm(Film film) {
+        String sql = "UPDATE film SET title=?, description=?, release_year=?, language_id=?, rental_duration=?, "
+                + "rental_rate=?, length=?, replacement_cost=?, rating=?, special_features=? WHERE id=?";
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, film.getTitle());
+            stmt.setString(2, film.getDescription());
+            stmt.setInt(3, film.getRelease_year());
+            stmt.setInt(4, film.getLanguage_id());
+            stmt.setInt(5, film.getRental_duration());
+            stmt.setDouble(6, film.getRental_rate());
+            stmt.setInt(7, film.getLength());
+            stmt.setDouble(8, film.getReplacement_cost());
+            stmt.setString(9, film.getRating());
+            stmt.setString(10, film.getSpecial_features());
+            stmt.setInt(11, film.getId());
+
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
 

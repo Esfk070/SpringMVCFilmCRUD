@@ -14,140 +14,145 @@ import com.skilldistillery.film.entities.Film;
 
 @Controller
 public class FilmController {
-	
-	@Autowired
-	private FilmDAO filmdao;
 
-	@RequestMapping(path = { "index.do", "/" })
-	public String index() {
-		return "WEB-INF/index.jsp";
-	}
-	
-	// Get Film by ID 
-	@RequestMapping(path = "getFilmById.do", params = "filmId", method = RequestMethod.GET)
-	public ModelAndView getFilmById(@RequestParam("filmId") int filmId) {
-		ModelAndView mv = new ModelAndView();
-		Film film = filmdao.findFilmById(filmId);
-		
-		if (film != null) {
-			mv.addObject("film", film);
-			mv.setViewName("WEB-INF/result.jsp");
-		} else {
-			mv.addObject("message", "No film found with ID: " + filmId);
-			mv.setViewName("WEB-INF/error.jsp");
-		}
-		return mv;
-	}
-	
-	// Get Film by Keyword 
-	@RequestMapping(path = "getFilmByKeyword.do", method = RequestMethod.GET)
-    public ModelAndView getFilmByKeyword(@RequestParam("keyword") String keyword) {
+    @Autowired
+    private FilmDAO filmdao;
+
+    @RequestMapping(path = { "index.do", "/" })
+    public String index() {
+        return "WEB-INF/index.jsp";
+    }
+
+    @RequestMapping(path = "getFilmById.do", params = "filmId", method = RequestMethod.GET)
+    public ModelAndView getFilmById(@RequestParam("filmId") int filmId) {
         ModelAndView mv = new ModelAndView();
-        List<Film> films = filmdao.findFilmByKeyword(keyword);
-        
-        if (!films.isEmpty()) {
-            mv.addObject("films", films);
-            mv.setViewName("WEB-INF/filmList.jsp"); // Make sure this JSP is set up to handle a list of films
+        Film film = filmdao.findFilmById(filmId);
+
+        if (film != null) {
+            mv.addObject("film", film);
+            mv.setViewName("WEB-INF/result.jsp");
         } else {
-            mv.addObject("message", "No films found with keyword: " + keyword);
+            mv.addObject("message", "No film has been found with ID: " + filmId);
             mv.setViewName("WEB-INF/error.jsp");
         }
         return mv;
     }
-	
-	// Add Film 
-	@RequestMapping(path = "addFilm.do", method = RequestMethod.POST)
-	public ModelAndView addFilm(
-	    @RequestParam("filmTitle") String filmTitle,
-	    @RequestParam(value = "languageId", defaultValue = "0") int languageId,
-	    @RequestParam(value = "rentalDuration", defaultValue = "0") int rentalDuration,
-	    @RequestParam(value = "rentalRate", defaultValue = "0.0") double rentalRate,
-	    @RequestParam(value = "replacementCost", defaultValue = "0.0") double replacementCost) {
-	    
-	    ModelAndView mv = new ModelAndView();
 
-	    if (filmTitle == null || filmTitle.trim().isEmpty()) {
-	        mv.addObject("message", "Film title is required.");
-	        mv.setViewName("WEB-INF/error.jsp");
-	        return mv;
-	    }
+    @RequestMapping(path = "getFilmByKeyword.do", method = RequestMethod.GET)
+    public ModelAndView getFilmByKeyword(@RequestParam("keyword") String keyword) {
+        ModelAndView mv = new ModelAndView();
+        List<Film> films = filmdao.findFilmByKeyword(keyword);
 
-	    Film addedFilm = new Film();
-	    addedFilm.setTitle(filmTitle);
-	    addedFilm.setDescription(null); 
-	    addedFilm.setRelease_year(0); 
-	    addedFilm.setLanguage_id(languageId);
-	    addedFilm.setRental_duration(rentalDuration);
-	    addedFilm.setRental_rate(rentalRate);
-	    addedFilm.setLength(0); 
-	    addedFilm.setReplacement_cost(replacementCost);
-	    addedFilm.setRating(null); 
-	    addedFilm.setSpecial_features(null); 
+        if (!films.isEmpty()) {
+            mv.addObject("films", films);
+            mv.setViewName("WEB-INF/result.jsp");
+        } else {
+            mv.addObject("message", "No films have been found with keyword: " + keyword);
+            mv.setViewName("WEB-INF/error.jsp");
+        }
+        return mv;
+    }
 
-	    addedFilm = filmdao.addFilm(addedFilm); 
+    @RequestMapping(path = "addFilm.do", method = RequestMethod.POST)
+    public ModelAndView addFilm(
+            @RequestParam("filmTitle") String filmTitle,
+            @RequestParam(value = "filmDescription", required = false) String filmDescription,
+            @RequestParam(value = "releaseYear", defaultValue = "0") int releaseYear,
+            @RequestParam(value = "languageId", defaultValue = "0") int languageId,
+            @RequestParam(value = "rentalDuration", defaultValue = "0") int rentalDuration,
+            @RequestParam(value = "rentalRate", defaultValue = "0.0") double rentalRate,
+            @RequestParam(value = "replacementCost", defaultValue = "0.0") double replacementCost,
+            @RequestParam(value = "rating", required = false) String rating,
+            @RequestParam(value = "specialFeatures", required = false) String specialFeatures) {
 
-	    if (addedFilm != null) {
-	        mv.addObject("film", addedFilm);
-	        mv.setViewName("WEB-INF/result.jsp");
-	    } else {
-	        mv.addObject("message", "Failed to add new film.");
-	        mv.setViewName("WEB-INF/error.jsp");
-	    }
+        ModelAndView mv = new ModelAndView();
 
-	    return mv;
-	}
-	
-	// Update Film 
-	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
-	public ModelAndView updateFilm(
-	    @RequestParam("filmId") int filmId,
-	    @RequestParam("filmTitle") String filmTitle,
-	    @RequestParam(value = "languageId", defaultValue = "0") int languageId,
-	    @RequestParam(value = "rentalDuration", defaultValue = "0") int rentalDuration,
-	    @RequestParam(value = "rentalRate", defaultValue = "0.0") double rentalRate,
-	    @RequestParam(value = "replacementCost", defaultValue = "0.0") double replacementCost) {
-	    
-	    ModelAndView mv = new ModelAndView();
+        if (filmTitle == null || filmTitle.trim().isEmpty()) {
+            mv.addObject("message", "Film title is required.");
+            mv.setViewName("WEB-INF/error.jsp");
+            return mv;
+        }
 
-	    Film film = filmdao.findFilmById(filmId);
-	    if (film == null) {
-	        mv.addObject("message", "Film not found.");
-	        mv.setViewName("WEB-INF/error.jsp");
-	        return mv;
-	    }
+        Film newFilm = new Film();
+        newFilm.setTitle(filmTitle);
+        newFilm.setDescription(filmDescription);
+        newFilm.setRelease_year(releaseYear);
+        newFilm.setLanguage_id(languageId);
+        newFilm.setRental_duration(rentalDuration);
+        newFilm.setRental_rate(rentalRate);
+        newFilm.setReplacement_cost(replacementCost);
+        newFilm.setRating(rating);
+        newFilm.setSpecial_features(specialFeatures);
 
-	    film.setTitle(filmTitle);
-	    film.setLanguage_id(languageId);
-	    film.setRental_duration(rentalDuration);
-	    film.setRental_rate(rentalRate);
-	    film.setReplacement_cost(replacementCost);
+        boolean successfullyAdded = filmdao.addFilm(newFilm);
 
-	    boolean updated = filmdao.updateFilm(film);
+        if (successfullyAdded) {
+            mv.addObject("film", newFilm);
+            mv.setViewName("WEB-INF/result.jsp");
+        } else {
+            mv.addObject("message", "Failed to add new film.");
+            mv.setViewName("WEB-INF/error.jsp");
+        }
 
-	    if (updated) {
-	        mv.addObject("film", film);
-	        mv.setViewName("WEB-INF/result.jsp");
-	    } else {
-	        mv.addObject("message", "Failed to update film.");
-	        mv.setViewName("WEB-INF/error.jsp");
-	    }
+        return mv;
+    }
 
-	    return mv;
-	}
-	
-	//  Delete Film 
-	@RequestMapping(path = "deleteFilm.do", params = "filmId", method = RequestMethod.POST)
-	public ModelAndView deleteFilm(@RequestParam("filmId") int filmId) {
-		ModelAndView mv = new ModelAndView();
-		boolean deleted = filmdao.deleteFilmById(filmId);
-		
-		if (deleted) {
-			mv.addObject("message", "Film has been deleted.");
-			mv.setViewName("WEB-INF/resultDelete.jsp");
-		} else {
-			mv.addObject("message", "Failed to delete film.");
-			mv.setViewName("WEB-INF/error.jsp");
-		}
-		return mv;
-	}
+    @RequestMapping(path = "deleteFilm.do", params = "filmId", method = RequestMethod.POST)
+    public ModelAndView deleteFilm(@RequestParam("filmId") int filmId) {
+        ModelAndView mv = new ModelAndView();
+        boolean deleted = filmdao.deleteFilmById(filmId);
+
+        if (deleted) {
+            mv.addObject("message", "Film has been deleted.");
+            mv.setViewName("WEB-INF/resultDelete.jsp");
+        } else {
+            mv.addObject("message", "Failed to delete film.");
+            mv.setViewName("WEB-INF/error.jsp");
+        }
+        return mv;
+    }
+
+    @RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
+    public ModelAndView updateFilm(
+            @RequestParam("filmId") int filmId,
+            @RequestParam("filmTitle") String filmTitle,
+            @RequestParam("filmDescription") String filmDescription,
+            @RequestParam("releaseYear") int releaseYear,
+            @RequestParam("languageId") int languageId,
+            @RequestParam("rentalDuration") int rentalDuration,
+            @RequestParam("rentalRate") double rentalRate,
+            @RequestParam("replacementCost") double replacementCost,
+            @RequestParam("rating") String rating,
+            @RequestParam("specialFeatures") String specialFeatures) {
+
+        ModelAndView mv = new ModelAndView();
+
+        Film filmToUpdate = filmdao.findFilmById(filmId);
+        if (filmToUpdate != null) {
+            filmToUpdate.setTitle(filmTitle);
+            filmToUpdate.setDescription(filmDescription);
+            filmToUpdate.setRelease_year(releaseYear);
+            filmToUpdate.setLanguage_id(languageId);
+            filmToUpdate.setRental_duration(rentalDuration);
+            filmToUpdate.setRental_rate(rentalRate);
+            filmToUpdate.setReplacement_cost(replacementCost);
+            filmToUpdate.setRating(rating);
+            filmToUpdate.setSpecial_features(specialFeatures);
+
+            boolean updated = filmdao.updateFilm(filmToUpdate);
+
+            if (updated) {
+                mv.addObject("film", filmToUpdate);
+                mv.setViewName("WEB-INF/result.jsp");
+            } else {
+                mv.addObject("message", "Failed to update film.");
+                mv.setViewName("WEB-INF/error.jsp");
+            }
+        } else {
+            mv.addObject("message", "Film not found for ID: " + filmId);
+            mv.setViewName("WEB-INF/error.jsp");
+        }
+
+        return mv;
+    }
 }
