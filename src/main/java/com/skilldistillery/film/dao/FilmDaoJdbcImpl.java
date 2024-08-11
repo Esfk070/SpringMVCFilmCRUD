@@ -109,6 +109,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
     @Override
     public List<Film> findFilmByKeyword(String keyword) {
+    	System.out.println("FilmDAOJdbcImpl.java findFilmByKeyword() called");
         List<Film> films = new ArrayList<>();
         String sql = "SELECT id, title, description, release_year, language_id, rental_duration, "
                 + "rental_rate, length, replacement_cost, rating, special_features "
@@ -116,6 +117,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
+        	System.out.println("FilmDAOJdbcImpl.java findFilmByKeyword() called try part");
             stmt.setString(1, "%" + keyword + "%");
             stmt.setString(2, "%" + keyword + "%");
             ResultSet rs = stmt.executeQuery();

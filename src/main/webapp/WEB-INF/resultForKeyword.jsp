@@ -11,7 +11,8 @@
 </head>
 
 <body>
-	<h1>	 Here are your list of films: </h1>
+<h1>	 Here are your list of films: </h1>
+	
 	
 	
 
@@ -29,6 +30,11 @@
             				<li>${actor.first_name}</li>
         				</c:forEach>
     				</ul>
+<%-- 		 	 	<ul>
+       				<c:forEach var="actor" items="${film.filmCast}">
+            				<li>${actor.first_name}</li>
+        				</c:forEach>
+    				</ul> --%>
     			</p>
     	
 		</c:forEach>
