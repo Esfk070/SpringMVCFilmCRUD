@@ -13,29 +13,20 @@
 <body>
 <h1>	 Here are your list of films: </h1>
 	
-	
-	
 
 	<c:if test="${not empty films}">
 		<c:forEach var="film" items="${films}">
 			<p>Title: ${film.title}</p>
 			<p>Year: ${film.release_year}</p>
 			<p>Rating: ${film.rating}</p>
-			<p>Description: ${film.description}</p>		
+			<p>Description: ${film.description}</p>
 		
-		<!-- JavaWeb>TagLibraries>JSTL-Map Iteration  -->
-			<p>Cast: 
-		 	 	<ul>
-       				<c:forEach var="actor" items="${film.filmCast}">
-            				<li>${actor.first_name}</li>
-        				</c:forEach>
-    				</ul>
-<%-- 		 	 	<ul>
-       				<c:forEach var="actor" items="${film.filmCast}">
-            				<li>${actor.first_name}</li>
-        				</c:forEach>
-    				</ul> --%>
-    			</p>
+			<p>Cast:</p> 
+		 	 <ul>
+       			<c:forEach var="actor" items="${film.filmCast}">
+            			<li>${actor.first_name} ${actor.last_name}</li>
+        			</c:forEach>
+    			</ul>
     	
 		</c:forEach>
 		
