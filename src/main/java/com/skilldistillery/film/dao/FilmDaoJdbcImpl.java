@@ -22,6 +22,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
     private static final String PASS = "student";
 
     public FilmDaoJdbcImpl() {
+    	System.out.println("FilmDaoJdbcImpl constructor working");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -33,12 +34,14 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 
     @Override
     public Film findFilmById(int filmId) {
+    	System.out.println("FilmDaoJdbcImpl called PRE");
         Film film = null;
         String sql = "SELECT id, title, description, release_year, language_id, "
                 + "rental_duration, rental_rate, length, replacement_cost, "
                 + "rating, special_features FROM film WHERE id=?";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+        	System.out.println("FilmDaoJdbcImpl called");
 
             stmt.setInt(1, filmId);
             ResultSet rs = stmt.executeQuery();

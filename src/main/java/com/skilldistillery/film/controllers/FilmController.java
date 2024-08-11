@@ -27,6 +27,7 @@ public class FilmController {
     public ModelAndView getFilmById(@RequestParam("filmId") int filmId) {
         ModelAndView mv = new ModelAndView();
         Film film = filmdao.findFilmById(filmId);
+        System.out.println("getFilmByID called");
 
         if (film != null) {
             mv.addObject("film", film);
