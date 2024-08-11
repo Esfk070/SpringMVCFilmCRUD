@@ -11,9 +11,7 @@
 </head>
 
 <body>
-	<h1>	 H1 TAG WITHIN BODY	</h1>
-	
-	<h2>TAG WITHIN BODY H1 - RENAME</h2>
+	<h1>	 Here are your results: </h1>
 
 	<c:if test="${not empty film}">
 		<p>Title: ${film.title}</p>

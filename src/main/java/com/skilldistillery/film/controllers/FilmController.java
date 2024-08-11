@@ -57,6 +57,53 @@ public class FilmController {
     }
 	
 // == ADD FILM == 
+
+	@RequestMapping(path = "addFilm.do", method = RequestMethod.POST)
+	public ModelAndView addFilm(
+	
+			@RequestParam("filmTitle") String filmTitle,
+	        @RequestParam(value = "languageId", defaultValue = "0") int languageId,
+	        @RequestParam(value = "rentalDuration", defaultValue = "0") int rentalDuration,
+	        @RequestParam(value = "rentalRate", defaultValue = "0.0") double rentalRate,
+	        @RequestParam(value = "replacementCost", defaultValue = "0.0") double replacementCost) {
+	    
+	    ModelAndView mv = new ModelAndView();
+
+	    // CHECK FOR FILM's NAME - if empty, send user over to error. (should resolve 400)
+	    if (filmTitle == null || filmTitle.trim().isEmpty()) {
+	        mv.addObject("message", "Film title is required.");
+	        mv.setViewName("WEB-INF/error.jsp");
+	        return mv;
+	    }
+
+	    Film addedFilm = new Film();
+	    addedFilm.setTitle(filmTitle);
+	    addedFilm.setDescription(null); 
+	    addedFilm.setRelease_year(0); 
+	    addedFilm.setLanguage_id(languageId);
+	    addedFilm.setRental_duration(rentalDuration);
+	    addedFilm.setRental_rate(rentalRate);
+	    addedFilm.setLength(0); 
+	    addedFilm.setReplacement_cost(replacementCost);
+	    addedFilm.setRating(null); 
+	    addedFilm.setSpecial_features(null); 
+
+	    // boolean successfullyAddedFilm = filmdao.addFilm(addedFilm); 
+	    boolean successfullyAddedFilm = filmdao.addFilm(addedFilm); 
+
+	    if (successfullyAddedFilm) {
+	        mv.addObject("film", addedFilm);
+	        mv.setViewName("WEB-INF/result.jsp");
+	    } else {
+	        mv.addObject("message", "Failed to add new film.");
+	        mv.setViewName("WEB-INF/error.jsp");
+	    }
+
+	    return mv;
+	}
+	
+	
+/*	
 	@RequestMapping(path = "addFilm.do", params = {"filmTitle", "languageId", "rentalDuration", "rentalRate", 
 			"replacementCost"}, method = RequestMethod.POST	)
 	public ModelAndView addFilm(@RequestParam("filmTitle") String filmTitle, @RequestParam("languageId") int languageId, 
@@ -100,6 +147,10 @@ public class FilmController {
 		}
 		return mv;
 	}
+*/	
+	
+	
+	
 //	
 //// == UPDATE FILM == 
 //	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)

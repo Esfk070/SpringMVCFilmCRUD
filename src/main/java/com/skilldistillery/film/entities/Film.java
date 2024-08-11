@@ -6,36 +6,23 @@ import java.util.Objects;
 public class Film {
 	
 	private int id;		
-	
 	private String title;	
-	
 	private String description;	
-	
 	private Integer release_year;	//  Nullable
-	
 	private int language_id;	
-	
 	private int rental_duration;	
-	
 	private double rental_rate;		
-	
 	private Integer length;				// Nullable
-	
 	private double replacement_cost;	
-	
 	private String rating;		
-	
 	private String special_features;	
-	
 	private List<Actor> actors;		
 	
-	private String languageName;	
-	
+	private String languageName;	 // 
 	
 	static {
 		
 	}
-
 
 	
 	public String getLanguageName() {
@@ -218,7 +205,15 @@ public class Film {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+/*
+	public List<Actor> getFilmCast() {
+		return filmCast;
+	}
 
+	public void setFilmCast(List<Actor> filmCast) {
+		this.filmCast = filmCast;
+	}
+*/
 
 
 }

@@ -103,7 +103,7 @@ public class FilmDaoJdbcImpl implements FilmDAO {
     }
 
     @Override
-    public void addFilm(Film newFilm) {
+    public boolean addFilm(Film newFilm) {
         String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, "
                    + "rental_rate, length, replacement_cost, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS);
@@ -120,13 +120,12 @@ public class FilmDaoJdbcImpl implements FilmDAO {
             stmt.setString(9, newFilm.getRating());
 
             int rowsAffected = stmt.executeUpdate();
-            if (rowsAffected == 0) {
-                throw new SQLException("Failed to insert film, no rows affected.");
-            }
+            return rowsAffected > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new RuntimeException("Error adding new film to database", e);
+            // throw new RuntimeException("Error adding new film to database", e);
+            return false;
         }
     }
 
@@ -162,4 +161,6 @@ public class FilmDaoJdbcImpl implements FilmDAO {
 		}
 		return false;
     }
+
+
 }
