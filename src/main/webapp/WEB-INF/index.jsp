@@ -8,13 +8,12 @@
 
 <meta charset="UTF-8">
 <title>MVC Film Site</title>
-<<<<<<< HEAD
 <style>
 table {
 	width: 75%;
 	margin: 10px 0;
 }
-=======
+
 </head>
 
 <body>
@@ -36,7 +35,6 @@ table {
 	<form action="addFilm.do" method="post">
 		
 		Title: <input name="filmTitle" type="text" />
->>>>>>> 57ecc9ef77b321cbbd6c440daf56f0351d31ba0c
 
 td {
 	padding: 15px;
@@ -54,26 +52,15 @@ input[type="text"], input[type="number"] {
 
 </head>
 
-<<<<<<< HEAD
 <body>
 	<h1>Welcome to the SpringMVC Film Site!</h1>
-=======
+
 	<!-- Delete FIlm Form: Allows user to search for a film by id -->
 	<h2>Delete Film by ID</h2>
 	<form action="deleteFilm.do" method="post">
 		Delete by Film ID: <input name="filmId" type="text" /> <input
 			type="submit" value="Submit" /><br />
 	</form>
-	
-	
-	
-	<!-- Film Keyword Form: Allows user to search for a film by keyword -->
-	<h2>Search for Film by Keyword</h2>
-	<form action="getFilmByKeyword.do" method="get">
-		Search by keyword: <input name="keyword" type="text" /> <input
-			type="submit" value="Submit" /><br />
-	</form>
->>>>>>> 57ecc9ef77b321cbbd6c440daf56f0351d31ba0c
 
 	<table>
 		<tr>
