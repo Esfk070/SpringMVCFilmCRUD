@@ -21,7 +21,7 @@
 		<p style="color:red;">${error}</p>
 	</c:if>
 
-	<a href="index.jsp">Go Back to Home</a>
+	<a href="index.do">Try again - Home</a>
 
 </body>
 

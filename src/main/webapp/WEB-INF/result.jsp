@@ -16,15 +16,15 @@
 	<c:if test="${not empty film}">
 		<p>Title: ${film.title}</p>
 		<p>Year: ${film.release_year}</p>
-		<p>Rating ${film.rating}</p>
+		<p>Rating: ${film.rating}</p>
 		<p>Description: ${film.description}</p>
 		
 		<!-- JavaWeb>TagLibraries>JSTL-Map Iteration  -->
 <!-- 	<p>Cast: ${film.title}</p>	-->
 		<p>Cast: 
-			<ul>
-       			<c:forEach var="actor" items="${film.actors}">
-            			<li>${actor.name}</li>
+		 	 <ul>
+       			<c:forEach var="actor" items="${film.filmCast}">
+            			<li>${actor.first_name}</li>
         			</c:forEach>
     			</ul>
     		</p>

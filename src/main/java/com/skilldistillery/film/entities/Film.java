@@ -16,10 +16,21 @@ public class Film {
     private double replacement_cost;
     private String rating;
     private String special_features;
-    private List<Actor> actors;
+    private List<Actor> actorList;
     private String languageName;
+    private List<Actor> filmCast;
 
-    public Film() {
+    // --------------------------------------------------------------
+    public List<Actor> getFilmCast() {
+		return filmCast;
+	}
+
+	public void setFilmCast(List<Actor> filmCast) {
+		this.filmCast = filmCast;
+	}
+	// --------------------------------------------------------------
+
+	public Film() {
         super();
     }
 
@@ -84,7 +95,7 @@ public class Film {
     }
 
     public List<Actor> getActors() {
-        return actors;
+        return actorList;
     }
 
     public String getLanguageName() {
@@ -137,7 +148,7 @@ public class Film {
     }
 
     public void setActors(List<Actor> actors) {
-        this.actors = actors;
+        this.actorList = actors;
     }
 
     public void setLanguageName(String languageName) {
@@ -147,7 +158,7 @@ public class Film {
     @Override
     public String toString() {
         return "title=" + title + ", release_year=" + release_year + ", rating=" + rating
-                + ", description=" + description + ", language=" + languageName + ", Actors=" + actors;
+                + ", description=" + description + ", language=" + languageName + ", Actors=" + actorList;
     }
 
     @Override
