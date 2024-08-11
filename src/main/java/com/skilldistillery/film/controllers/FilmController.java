@@ -136,7 +136,7 @@ public class FilmController {
         return mv;
     }
 
-    @RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
+    @RequestMapping(path = "updateFilm.do", method = RequestMethod.GET)
     public ModelAndView updateFilm(
             @RequestParam("filmId") int filmId,
             @RequestParam("filmTitle") String filmTitle,
