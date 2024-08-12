@@ -45,10 +45,13 @@
 	</form>
 	
 		</br>
-		<form action="updateFilm.do" method="POST">
+			<a href="update.jsp" >UPDATE</a>
+		
+		
+	<%-- 	<form action="updateFilm.do" method="POST">
 		 <input type="hidden" name="filmId" value="${film.id}" /> 
 		<input type="submit" value ="Update Film"  />
-	</form>
+	</form> --%>
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
