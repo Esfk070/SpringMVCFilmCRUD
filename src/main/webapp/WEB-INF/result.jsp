@@ -49,7 +49,30 @@
 			</form>
 		</div>
 	</div>
+<<<<<<< HEAD
 
+=======
+	</br>
+		<form action="deleteFilm.do" method="POST">
+		 <input type="hidden" name="filmId" value="${film.id}" /> 
+		<input type="submit" value ="Delete Film"  />
+	</form>
+	
+		</br>
+
+		<form action="showUpdateForm.do" method="GET">
+    <input type="hidden" name="filmId" value="${film.id}" />
+    <input type="submit" value="Update Film" class="btn btn-warning" />
+</form>
+
+
+		
+	<%-- 	<form action="updateFilm.do" method="POST">
+		 <input type="hidden" name="filmId" value="${film.id}" /> 
+		<input type="submit" value ="Update Film"  />
+	</form> --%>
+	
+>>>>>>> a4ecdab36d2989f42be8e1d573e7f4cf592f67d7
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>
