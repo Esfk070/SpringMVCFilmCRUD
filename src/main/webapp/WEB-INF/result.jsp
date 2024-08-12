@@ -45,7 +45,7 @@
 	</form>
 	
 		</br>
-			<a href="update.jsp" >UPDATE</a>
+			<a href="/src/main/webapp/WEB-INF/update.jsp" >UPDATE</a>
 		
 		
 	<%-- 	<form action="updateFilm.do" method="POST">
