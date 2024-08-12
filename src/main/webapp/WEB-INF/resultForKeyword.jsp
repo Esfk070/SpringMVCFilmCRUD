@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!--<%@ taglib uri="jakarta.tags.core" prefix="c" %>_-->
- <!--<%@ taglib uri="https://jakarta.ee/tags/core" prefix="c" %> -->
-
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+ 
+ 
+<%--  <%@ taglib uri="https://jakarta.ee/tags/core" prefix="c" %> 
+ --%>
+ 
 <!DOCTYPE html>
 <html>
 
@@ -28,7 +31,7 @@
 								<h6 class="card-subtitle mb-2 text-muted">Year: ${film.release_year}</h6>
 								<p class="card-text">Rating: ${film.rating}</p>
 								<p class="card-text">Description: ${film.description}</p>
-								<h6 class="card-subtitle mb-2 text-muted">Cast:</h6>
+
 								<ul class="list-group list-group-flush">
 									<c:forEach var="actor" items="${film.filmCast}">
 										<li class="list-group-item">${actor.first_name} ${actor.last_name}</li>

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- <%@ taglib uri="jakarta.tags.core" prefix="c" %> -->
- %@ taglib uri="https://jakarta.ee/tags/core" prefix="c" %>	
-
+ <%@ taglib uri="jakarta.tags.core" prefix="c" %> 
+<%--  <%@%@ taglib uri="https://jakarta.ee/tags/core" prefix="c" %>	
+ --%>
 <!DOCTYPE html>
 <html>
 
@@ -38,10 +38,22 @@
 
 		<a href="index.do" class="btn btn-primary mt-4">Return to Main Menu</a>
 	</div>
-
+	</br>
+		<form action="deleteFilm.do" method="POST">
+		 <input type="hidden" name="filmId" value="${film.id}" /> 
+		<input type="submit" value ="Delete Film"  />
+	</form>
+	
+		</br>
+		<form action="updateFilm.do" method="POST">
+		 <input type="hidden" name="filmId" value="${film.id}" /> 
+		<input type="submit" value ="Update Film"  />
+	</form>
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+	
+	
 </body>
 
 </html>
