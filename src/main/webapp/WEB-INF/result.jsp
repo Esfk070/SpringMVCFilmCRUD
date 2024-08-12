@@ -45,8 +45,13 @@
 	</form>
 	
 		</br>
-			<a href="/src/main/webapp/WEB-INF/update.jsp" >UPDATE</a>
-		
+
+		<form action="showUpdateForm.do" method="GET">
+    <input type="hidden" name="filmId" value="${film.id}" />
+    <input type="submit" value="Update Film" class="btn btn-warning" />
+</form>
+
+
 		
 	<%-- 	<form action="updateFilm.do" method="POST">
 		 <input type="hidden" name="filmId" value="${film.id}" /> 
