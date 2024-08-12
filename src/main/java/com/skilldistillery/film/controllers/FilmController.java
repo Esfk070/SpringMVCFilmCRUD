@@ -43,29 +43,22 @@ public class FilmController {
     public ModelAndView getFilmByKeyword(@RequestParam("keyword") String keyword) {
         ModelAndView mv = new ModelAndView();
         List<Film> films = filmdao.findFilmByKeyword(keyword);
-      
         
-        for (Film film : films)
-        {
-        	System.out.println(film.getTitle());
+        for (Film film : films) {
+            System.out.println(film.getTitle());
         }
-        
- 
 
         System.out.println("getFilmByKEYWORD called");
 
         if (films != null) {
             mv.addObject("films", films);
-
             mv.setViewName("WEB-INF/resultForKeyword.jsp");
         } else {
-            mv.addObject("message", "No film has been found with ID: " + keyword);
+            mv.addObject("message", "No film has been found with keyword: " + keyword);
             mv.setViewName("WEB-INF/error.jsp");
         }
         return mv;
     }
-        
-
 
     @RequestMapping(path = "addFilm.do", method = RequestMethod.POST)
     public ModelAndView addFilm(
@@ -113,7 +106,7 @@ public class FilmController {
 
     @RequestMapping(path = "deleteFilm.do", params = "filmId", method = RequestMethod.POST)
     public ModelAndView deleteFilm(@RequestParam("filmId") int filmId) {
-    	System.out.println("deleteFilm called in Film controller on button press");
+        System.out.println("deleteFilm called in Film controller on button press");
         ModelAndView mv = new ModelAndView();
         boolean deleted = filmdao.deleteFilmById(filmId);
 
@@ -127,18 +120,22 @@ public class FilmController {
         return mv;
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    @RequestMapping(path = "updateFilm.do", params ="filmId", method = RequestMethod.POST)
+    @RequestMapping(path = "showUpdateForm.do", params = "filmId", method = RequestMethod.GET)
+    public ModelAndView showUpdateForm(@RequestParam("filmId") int filmId) {
+        ModelAndView mv = new ModelAndView();
+        Film film = filmdao.findFilmById(filmId);
+
+        if (film != null) {
+            mv.addObject("film", film);
+            mv.setViewName("WEB-INF/update.jsp");
+        } else {
+            mv.addObject("message", "No film found with ID: " + filmId);
+            mv.setViewName("WEB-INF/error.jsp");
+        }
+        return mv;
+    }
+
+    @RequestMapping(path = "updateFilm.do", params = "filmId", method = RequestMethod.POST)
     public ModelAndView updateFilm(
             @RequestParam("filmId") int filmId,
             @RequestParam("filmTitle") String filmTitle,
