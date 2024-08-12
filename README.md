@@ -3,27 +3,8 @@
 
 ## Overview
 
-The SpringMVCFilmCRUD project is a full stack Spring MVC web application, that showcases basic CRUD functionality.
+The SpringMVCFilmCRUD group project is a full stack Spring MVC web application, that showcases basic CRUD functionality.
 
--- TO DO LIST: (will be deleted before final push)
-
-USER STORY 1 - (X ) complete
-USER STORY 2 - (X ) complete 
-See (file) :
-
-USER STORY 6 - ( ) in progress / ( ) complete / ( ) not started
-See (file) : NEED TO WORK ON CAST - everything else is functional
-
-- 
- 
-USER STORY 3 - ( ) in progress / ( ) complete / ( ) not started
-See (file) : 
-USER STORY 4 - ( ) in progress / ( ) complete / ( ) not started
-See (file) : 
-USER STORY 5 - ( ) in progress / ( ) complete / ( ) not started
-See (file) : 
-
-3/4/5 - Update radial button / Delete radial button (in result.jsp & resultForKeyword.jsp)
 
 ### Team Members
 * Yolanda Rivers
@@ -31,7 +12,15 @@ See (file) :
 * Justin Denton
 
 ## How to Run
-* The user...
+* 1) Run on server.
+* 2) User has choice between searching or adding a film. 
+* 3) User can search for a film with an ID, and can return back to the homepage with a "Return to Main Menu" link.
+* 4) User can search for a film, or list of films that match a keyword, and can return back to the homepage with a "Return to Main Menu" link.
+* 5) 
+* 6) 
+* 7) 
+* 8) 
+* 9) 
 
 ## Technologies used
 * Spring Tool Suite, Eclipse IDE
@@ -43,7 +32,6 @@ See (file) :
 * Spring framework: (uses/functionality)
 ** Plain Old Java Objects (POJOs) - Java objects that do NOT extend other frameworks.
 
-TO DO: GO BACK THROUGH CHAPTER on GitHub
 
 * Dependency Injection: 
 
