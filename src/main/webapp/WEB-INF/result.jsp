@@ -45,21 +45,16 @@
 	</form>
 	
 		</br>
-<<<<<<< HEAD
 		<form action="showUpdateForm.do" method="GET">
     <input type="hidden" name="filmId" value="${film.id}" />
     <input type="submit" value="Update Film" class="btn btn-warning" />
 </form>
 
-=======
-			<a href="update.jsp" >UPDATE</a>
-		
 		
 	<%-- 	<form action="updateFilm.do" method="POST">
 		 <input type="hidden" name="filmId" value="${film.id}" /> 
 		<input type="submit" value ="Update Film"  />
 	</form> --%>
->>>>>>> ff99103f3ae34372ac6af2ab67058cee1a6f8321
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
